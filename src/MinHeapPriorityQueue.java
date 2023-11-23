@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 //Min-Heap implementation of a priority queue
-public class MinHeapPriorityQueue{
+public class MinHeapPriorityQueue implements PriorityQueue{
 
     /*
         Binary tree bijection. Relative array positions represent child-parent relationships
@@ -10,7 +10,7 @@ public class MinHeapPriorityQueue{
         Right-Child = 2i + 2
         Parent = (i - 1) / 2
     */
-    ArrayList<PriorityQueueNode> heap;
+    ArrayList<MinHeapPriorityQueueNode> heap;
 
     /*
         HashMap will give us O(1) lookup time for any vertex
@@ -24,14 +24,14 @@ public class MinHeapPriorityQueue{
     }
 
     public void insert(int vertex, int distance){
-        heap.add((new PriorityQueueNode(vertex,distance)));
+        heap.add((new MinHeapPriorityQueueNode(vertex,distance)));
         vertexToIndex.put(vertex, heap.size() - 1);
         heapifyUp(heap.size() - 1);
     }
 
     public PriorityQueueNode extractMin(){
-        PriorityQueueNode minNode = heap.get(0);
-        PriorityQueueNode lastNode = heap.get(heap.size()-1);
+        MinHeapPriorityQueueNode minNode = heap.get(0);
+        MinHeapPriorityQueueNode lastNode = heap.get(heap.size()-1);
         heap.set(0, lastNode);
         heap.remove(heap.size()-1);
         vertexToIndex.remove(minNode.vertex);
@@ -39,7 +39,7 @@ public class MinHeapPriorityQueue{
             vertexToIndex.put(heap.get(0).vertex, 0);
             heapifyDown(0);
         }
-        return minNode;
+        return new PriorityQueueNode(minNode.vertex, minNode.distance);
     }
 
     public int getDistance(int vertex){
@@ -89,7 +89,7 @@ public class MinHeapPriorityQueue{
     }
 
     private void swap(int i, int j){
-        PriorityQueueNode temp = heap.get(i);
+        MinHeapPriorityQueueNode temp = heap.get(i);
         heap.set(i, heap.get(j));
         heap.set(j, temp);
         vertexToIndex.put(heap.get(i).vertex, i);
@@ -97,11 +97,12 @@ public class MinHeapPriorityQueue{
     }
 }
 
-class PriorityQueueNode{
+class MinHeapPriorityQueueNode{
     int vertex;
     int distance;
-    public PriorityQueueNode(int vertex, int distance){
+    public MinHeapPriorityQueueNode(int vertex, int distance){
         this.vertex = vertex;
         this.distance = distance;
     }
 }
+

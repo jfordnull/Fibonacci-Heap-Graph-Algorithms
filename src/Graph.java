@@ -42,14 +42,14 @@ public class Graph {
         Random rand = new Random();
         Graph randomGraph = new Graph(V, E);
         for (int i = 1; i < V; i++){
-            int weight = rand.nextInt(maxWeight + 1) + 1;
+            int weight = rand.nextInt(maxWeight) + 1;
             int destination = rand.nextInt(i);
             randomGraph.addEdge(i, destination, weight);
         }
         for (int i = V - 1; i < E; i++){
             int source = rand.nextInt(V);
             int destination = rand.nextInt(V);
-            int weight = rand.nextInt(maxWeight + 1) + 1;
+            int weight = rand.nextInt(maxWeight) + 1;
             randomGraph.addEdge(source, destination, weight);
         }
         return randomGraph;

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//Min-Heap implementation of a priority queue
 public class MinHeap implements PriorityQueue{
 
     /*

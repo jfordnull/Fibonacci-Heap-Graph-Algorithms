@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FibHeapPriorityQueue{
+public class FibonacciHeap implements PriorityQueue{
     ArrayList<FibHeapNode> roots;
     FibHeapNode minNode;
     HashMap<Integer, FibHeapNode> nodeMap;
     int upperBound;
 
-    public FibHeapPriorityQueue() {
+    public FibonacciHeap() {
         roots = new ArrayList<>();
         minNode = null;
         nodeMap = new HashMap<>();
@@ -18,7 +18,9 @@ public class FibHeapPriorityQueue{
         return roots.isEmpty();
     }
 
-    public void insert(FibHeapNode node) {
+    public void insert(int vertex, int distance){insertNode(new FibHeapNode(vertex, distance));}
+
+    private void insertNode(FibHeapNode node) {
         node.parent = null;
         node.isLoser = false;
         if (minNode == null) {
@@ -37,12 +39,12 @@ public class FibHeapPriorityQueue{
         return node.distance;
     }
 
-    public FibHeapNode extractMin() {
+    public PriorityQueueNode extractMin() {
         FibHeapNode z = minNode;
         if (z != null) {
             if (z.child != null) {
                 for (FibHeapNode child : z.child) {
-                    insert(child);
+                    insertNode(child);
                 }
             }
             roots.remove(minNode);
@@ -54,7 +56,7 @@ public class FibHeapPriorityQueue{
             }
         }
         if(z != null){nodeMap.remove(z.key);}
-        return z;
+        return new PriorityQueueNode(z.key, z.distance);
     }
 
     private FibHeapNode findMin() {
@@ -92,7 +94,7 @@ public class FibHeapPriorityQueue{
         roots.clear();
         for (FibHeapNode node : degreeArray) {
             if (node != null) {
-                insert(node);
+                insertNode(node);
             }
         }
     }
@@ -116,7 +118,7 @@ public class FibHeapPriorityQueue{
 
     private void cut(FibHeapNode child, FibHeapNode parent) {
         parent.child.remove(child);
-        insert(child);
+        insertNode(child);
         parent.degree--;
     }
 

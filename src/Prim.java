@@ -25,7 +25,7 @@ public class Prim {
         }
         long stopTimer = System.nanoTime();
         double durationInSeconds = (stopTimer - startTimer) / 1e9;
-        System.out.println("Prim's implemented with a min-heap priority queue took: " +
+        System.out.println("Prim's implemented with " + heapType + " took " +
                 durationInSeconds + " seconds");
         System.out.println("For graph with V = " + graph.V + " and E = " + graph.E);
         return new PrimResults(parent,durationInSeconds);

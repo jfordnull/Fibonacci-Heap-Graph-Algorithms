@@ -1,4 +1,8 @@
 # Fibonacci Heap Graph Algorithms
 ### Optimizing Dijkstra's Shortest Path & Prim's Minimum Spanning Tree<br><br>
-![](Documentation/GraphAnimation.gif)
-_A randomly generated connected, undirected, weighted graph at three levels of magnification with |V| = 5 x 10<sup>4</sup> and |E| = 1 x 10<sup>8</sup>. Written in .DOT and visualized using the open-source graphing utility Gephi_
+![](Documentation/GraphAnimation.gif)<br>
+_A randomly generated connected, undirected, weighted graph at three levels of magnification. Written in .DOT and visualized using the open-source graphing utility Gephi. |V| = 5 x 10<sup>4</sup> and |E| = 1 x 10<sup>8</sup>_<br>
+
+Use of the Fibonacci heap to optimize Dijkstra shortest path algorithm was first proposed by Michael L. Fredman and Robert E. Tarjan in 1984. They showed a Fibonacci heap could be used to implement a priority queue with improved amortized time-complexity for certain operations, including a method to decrease the key associated with a particular node in the queue. This happens once for every e in E during the "Relaxation" phase in the most common variants of both Dijkstra and Prim's algorithm. 
+
+Despite its theoretical improvement over a binary heap priority queue, the constant factors and space-complexity associated with the Fibonacci heap have marred it with a reputation for being impractical. As Cormen et. al note in _Introduction to Algorithms_, Fibonacci heaps are "predominantly of theoretical interest." However, over the course of this project I found that Fibonacci heaps are of empirical use in optimizing these algorithms for problems that involve very dense graphs. I also found Fibonacci heaps far easier to implement in a modern programming environment than their reputation would suggest. You'll find a brief overview of my implementation below, as well as my analysis of the asymptotic behavior we should expect. (Including an amortized analysis of the Fibonacci heap using the potential function defined by Cormen et. al.) 

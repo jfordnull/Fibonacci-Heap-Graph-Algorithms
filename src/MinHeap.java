@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class MinHeap implements PriorityQueue{
 
     /*
-        Binary tree bijection. Relative array positions represent child-parent relationships
+        Binary tree bijection. Relative array positions infer child-parent relationships
         Left-Child = 2i + 1
         Right-Child = 2i + 2
         Parent = (i - 1) / 2

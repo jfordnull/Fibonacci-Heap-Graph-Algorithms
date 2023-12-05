@@ -9,4 +9,8 @@ Despite its theoretical improvement over a binary heap priority queue, the const
 
 ### Graph Representation
 
-My graphs are implemented as an adjacency list. Each vertex corresponds with an index in an array where a singly-linked list stores its incident edges. If you're unfamiliar with data structures for graphs, you can read about the difference between an adjacency list and an adjacency matrix [here](https://www.geeksforgeeks.org/comparison-between-adjacency-list-and-adjacency-matrix-representation-of-graph/).
+My graphs are implemented as an adjacency list. Each vertex corresponds with an index in an array where a singly-linked list stores its incident edges. To ensure the graph is undirected, I add an edge as a pair of edges flowing in both directions. If you're unfamiliar with data structures for graphs, you can read about the difference between an adjacency list and an adjacency matrix [here](https://www.geeksforgeeks.org/comparison-between-adjacency-list-and-adjacency-matrix-representation-of-graph/).
+
+### Random Graph Generation
+
+My approach to the generation of random weighted, connected, undirected graphs resembles the Barabási-Albert model, though I was unaware of this when I wrote the code. As I build the graph, I ensure connectivity by selecting a destination for the edge to be added from the set of vertices I've visited. This has the same side effect as the Barabási-Albert model: scale-free networks. The distribution of edges favors hubs at the start of the graph and grows sparser as we fan out.  

@@ -1,7 +1,7 @@
 # Fibonacci Heap Graph Algorithms
 ### Optimizing Dijkstra's Shortest Path & Prim's Minimum Spanning Tree<br><br>
 ![](Documentation/GraphAnimation.gif)<br>
-_A randomly generated connected, undirected, weighted graph at three levels of magnification. Written in .DOT and visualized using the open-source graphing utility Gephi. |V| = 5 x 10<sup>4</sup> and |E| = 1 x 10<sup>8</sup>_<br>
+_A randomly generated connected, undirected, weighted graph at three levels of magnification. Written in .DOT and visualized using the open-source graphing utility Gephi. |V| = 5 x 10<sup>4</sup> and |E| = 1 x 10<sup>9</sup>_<br>
 
 Use of the Fibonacci heap to optimize Dijkstra shortest path algorithm was first proposed by Michael L. Fredman and Robert E. Tarjan in 1984. They showed a Fibonacci heap could be used to implement a priority queue with improved amortized time-complexity for certain operations, including a method to decrease the key associated with a particular node in the queue. This happens once for every e in E during the "Relaxation" phase in the most common variants of both Dijkstra and Prim's algorithm. 
 

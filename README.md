@@ -14,3 +14,31 @@ My graphs are implemented as an adjacency list. Each vertex corresponds with an 
 ### Random Graph Generation
 
 My approach to the generation of random weighted, connected, undirected graphs resembles the Barabási-Albert model, though I was unaware of this when I wrote the code. As I build the graph, I ensure connectivity by selecting a destination for the edge to be added from the set of vertices I've visited. This has the same side effect as the Barabási-Albert model: scale-free networks. The distribution of edges favors hubs at the start of the graph and grows sparser as we fan out.  
+
+### Dijkstra's Shortest Path and Prim's MST
+
+My implementation of Dijkstra's returns an array containing the set of shortest-path distances for each node in the graph from the source, or a shortest path tree. If desired, it could be rewritten to return the list of edges contained in the shortest path tree for visualization without a change in time-complexity. A high-level description of the algorithm, followed by the code:
+
+1.  Assign a cost or tentative distance from source to every vertex in the graph. Let cost associated with source = 0 and cost associated with every other vertex = ∞
+2.  “Relax” all vertices adjacent to the current node. If distance to reach neighbors through the current node is less than the known cost, update accordingly
+3.  Choose the min-cost vertex as next current node
+4.  Repeat 2 and 3 until our queue is empty 
+
+```
+int[] distances = new int[graph.V];
+Arrays.fill(distances, Integer.MAX_VALUE);
+distances[source] = 0;
+for (int i = 0; i < graph.V; i++){priorityQueue.insert(i, distances[i]);}
+while(!priorityQueue.isEmpty()){
+    PriorityQueueNode minNode = priorityQueue.extractMin();
+    int u = minNode.vertex;
+    for (int[] neighbor : graph.getAdjacentEdges(u)){
+        int v = neighbor[0];
+        int w = neighbor[1];
+        if (distances[u] != Integer.MAX_VALUE && distances[u] + w < distances[v]){
+            distances[v] = distances[u] + w;
+            priorityQueue.decreaseKey(v, distances[v]);
+        }
+    }
+}
+```

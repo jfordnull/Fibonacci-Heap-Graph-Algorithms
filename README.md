@@ -17,7 +17,7 @@ My approach to the generation of random weighted, connected, undirected graphs r
 
 ### Dijkstra's Shortest Path and Prim's MST
 
-My implementation of Dijkstra's returns an array containing the set of shortest-path distances for each node in the graph from the source, or a shortest path tree. If desired, it could be rewritten to return the list of edges contained in the shortest path tree for visualization without a change in time-complexity. A high-level description of the algorithm, followed by the code:
+My implementation of Dijkstra's returns an array containing the set of shortest-path distances for each node in the graph from the source. If desired, it could be rewritten to return the list of edges contained in the shortest path tree for visualization without a change in worst-case time-complexity. A high-level description of the algorithm, followed by the code:
 
 1.  Assign a cost or tentative distance from source to every vertex in the graph. Let cost associated with source = 0 and cost associated with every other vertex = ∞
 2.  “Relax” all vertices adjacent to the current node. If distance to reach neighbors through the current node is less than the known cost, update accordingly
@@ -42,3 +42,5 @@ while(!priorityQueue.isEmpty()){
     }
 }
 ```
+_u is the current node, v is the neighbor node, and w is the weight of their shared edge_.
+
